@@ -51,9 +51,9 @@ class CaesarCipher:
 
 class CCBruteForce:
 
-    def __init__(self):
+    def __init__(self, dictionary):
         self.crypto = CaesarCipher(False)
-        self.words = get_file_content('dicionariopt.txt').split('\n')
+        self.words = get_file_content(dictionary).split('\n')
 
     def match(self, text):
         s = text.split(' ')
@@ -66,10 +66,12 @@ class CCBruteForce:
     def decrypt(self, text):
         dectext = ''
         best = 0
+        key = 0
         for i in range(len(self.crypto.alphabet)):
             ct = self.crypto.decrypt(text, i)
             m = self.match(ct)
             if m > best:
                 dectext = ct
                 best = m
-        return dectext
+                key = i
+        return [dectext, key]
