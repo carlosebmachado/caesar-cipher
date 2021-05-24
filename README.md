@@ -1,3 +1,3 @@
-# caesar cipher
+# Caesar Cipher
 
-Trabalho de faculdade.
+Trabalho de faculdade sobre a Cifra de Caesar.
